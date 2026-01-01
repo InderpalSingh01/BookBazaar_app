@@ -4,6 +4,7 @@
     border: 1.5px solid #A9A9A9;
     border-top: 0;
 }
+
 .sidebar-options{
     padding-top: 50px;
     padding-left: 20%;
@@ -11,6 +12,7 @@
     flex-direction: column;
     gap: 20px;
 }
+
 .sidebar-option{
     display: flex;
     align-items: center;
