@@ -1,12 +1,14 @@
 import { createContext, useEffect, useState } from "react";
-import { food_list, menu_list } from "../assets/assets";
+import { menu_list } from "../assets/assets";
 import axios from "axios";
+
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
 
-    const url = "https://tomato-food-del-backend-p1ni.onrender.com"
-    const [food_list, setFoodList] = useState([]);
+    // const url = "https://tomato-food-del-backend-p1ni.onrender.com"
+    const url = "http://localhost:4000"
+    const [book_list, setBookList] = useState([]);
     const [cartItems, setCartItems] = useState({});
     const [token, setToken] = useState("")
 
@@ -32,18 +34,24 @@ const StoreContextProvider = (props) => {
 
     const getTotalCartAmount = () => {
         let totalAmount = 0;
+
         for (const item in cartItems) {
+
             if (cartItems[item] > 0) {
-                let itemInfo = food_list.find((product) => product._id === item);
-                totalAmount += itemInfo.price * cartItems[item];
+                let itemInfo = book_list.find((product) => product._id === item);
+
+                totalAmount += (itemInfo?.price || 0) * cartItems[item];
+
             }
         }
+
+
         return totalAmount;
     }
 
-    const fetchFoodList = async () => {
-        const response = await axios.get(url + "/api/food/list");
-        setFoodList(response.data.data)
+    const fetchBookList = async () => {
+        const response = await axios.get(url + "/api/book/list");
+        setBookList(response.data.data)
     }
 
     const loadCartData = async (token) => {
@@ -53,7 +61,7 @@ const StoreContextProvider = (props) => {
 
     useEffect(() => {
         async function loadData() {
-            await fetchFoodList();
+            await fetchBookList();
             if (localStorage.getItem("token")) {
                 setToken(localStorage.getItem("token"))
                 await loadCartData({ token: localStorage.getItem("token") })
@@ -64,7 +72,7 @@ const StoreContextProvider = (props) => {
 
     const contextValue = {
         url,
-        food_list,
+        book_list,
         menu_list,
         cartItems,
         addToCart,

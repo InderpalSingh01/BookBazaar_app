@@ -7,12 +7,18 @@ const Footer = () => {
     <div className='footer' id='footer'>
       <div className="footer-content">
         <div className="footer-content-left">
-            <img src={assets.logo} alt="" />
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            <h1>BookBazaar</h1>
+            <p>Browse an extensive catalog of books from all genres, sourced from trusted publishers and authors. We are committed to delivering quality reads that enlighten your mind and enhance your book-buying experience.</p>
             <div className="footer-social-icons">
-                <img src={assets.facebook_icon} alt="" />
-                <img src={assets.twitter_icon} alt="" />
-                <img src={assets.linkedin_icon} alt="" />
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                    <img src={assets.facebook_icon} alt="Facebook" />
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                    <img src={assets.twitter_icon} alt="Twitter" />
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                    <img src={assets.linkedin_icon} alt="LinkedIn" />
+                </a>
             </div>
         </div>
         <div className="footer-content-center">
@@ -27,13 +33,13 @@ const Footer = () => {
         <div className="footer-content-right">
             <h2>GET IN TOUCH</h2>
             <ul>
-                <li>+1-212-456-7890</li>
-                <li>contact@tomato.com</li>
+                <li>+91-4598756898</li>
+                <li>contact@bookbazaar.com</li>
             </ul>
         </div>
       </div>
       <hr />
-      <p className="footer-copyright">Copyright 2024 © Tomato.com - All Right Reserved.</p>
+      <p className="footer-copyright">Copyright 2025 © BookBazaar.com - All Right Reserved.</p>
     </div>
   )
 }

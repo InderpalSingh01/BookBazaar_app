@@ -10,7 +10,7 @@ const Add = () => {
         name: "",
         description: "",
         price: "",
-        category: "Salad"
+        category: "Fiction"
     });
 
     const [image, setImage] = useState(false);
@@ -23,14 +23,14 @@ const Add = () => {
         formData.append("price", Number(data.price));
         formData.append("category", data.category);
         formData.append("image", image);
-        const response = await axios.post(`${url}/api/food/add`, formData);
+        const response = await axios.post(`${url}/api/book/add`, formData);
         if (response.data.success) {
             toast.success(response.data.message)
             setData({
                 name: "",
                 description: "",
                 price: "",
-                category: "Salad"
+                category: "Fiction"
             })
             setImage(false);
         }
@@ -55,31 +55,31 @@ const Add = () => {
                     </label>
                     <input onChange={(e) => { setImage(e.target.files[0]) }} type="file" id="image" hidden required />
                 </div>
-                <div className='add-product-name flex-col'>
-                    <p>Product name</p>
+                <div className='add-book-name flex-col'>
+                    <p>Book name</p>
                     <input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder='Type here' required />
                 </div>
-                <div className='add-product-description flex-col'>
-                    <p>Product description</p>
+                <div className='add-book-description flex-col'>
+                    <p>Book description</p>
                     <textarea name='description' onChange={onChangeHandler} value={data.description} type="text" rows={6} placeholder='Write content here' required />
                 </div>
                 <div className='add-category-price'>
                     <div className='add-category flex-col'>
-                        <p>Product category</p>
+                        <p>Book category</p>
                         <select name='category' onChange={onChangeHandler} >
-                            <option value="Salad">Salad</option>
-                            <option value="Rolls">Rolls</option>
-                            <option value="Deserts">Deserts</option>
-                            <option value="Sandwich">Sandwich</option>
-                            <option value="Cake">Cake</option>
-                            <option value="Pure Veg">Pure Veg</option>
-                            <option value="Pasta">Pasta</option>
-                            <option value="Noodles">Noodles</option>
+                            <option value="Fiction">Fiction</option>
+                            <option value="Non-Fiction">Non-Fiction</option>
+                            <option value="Romance">Romance</option>
+                            <option value="Mystery">Mystery</option>
+                            <option value="Horror">Horror</option>
+                            <option value="Self-Help">Self-Help</option>
+                            <option value="Educational">Educational</option>
+                            <option value="Biography">Biography</option>
                         </select>
                     </div>
                     <div className='add-price flex-col'>
-                        <p>Product Price</p>
-                        <input type="Number" name='price' onChange={onChangeHandler} value={data.price} placeholder='$25' />
+                        <p>Book Price</p>
+                        <input type="Number" name='price' onChange={onChangeHandler} value={data.price} placeholder='₹50' />
                     </div>
                 </div>
                 <button type='submit' className='add-btn' >ADD</button>

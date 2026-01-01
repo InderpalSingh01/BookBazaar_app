@@ -2,10 +2,12 @@ import express  from "express"
 import cors from 'cors'
 import { connectDB } from "./config/db.js"
 import userRouter from "./routes/userRoute.js"
-import foodRouter from "./routes/foodRoute.js"
 import 'dotenv/config'
 import cartRouter from "./routes/cartRoute.js"
 import orderRouter from "./routes/orderRoute.js"
+import paymentRoute from "./routes/paymentRoute.js"
+import bookRouter from "./routes/bookRoute.js"
+
 
 // app config
 const app = express()
@@ -21,9 +23,10 @@ connectDB()
 
 // api endpoints
 app.use("/api/user", userRouter)
-app.use("/api/food", foodRouter)
+app.use("/api/book", bookRouter)
 app.use("/images",express.static('uploads'))
 app.use("/api/cart", cartRouter)
+app.use("/api/payment",paymentRoute )
 app.use("/api/order",orderRouter)
 
 app.get("/", (req, res) => {
